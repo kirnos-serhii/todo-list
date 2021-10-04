@@ -23,11 +23,24 @@ describe('Create task form', () => {
         render(<CreateTaskForm handleCreate={() => {}}/>);
         const notEmptyInputValue = '23';
         const input = screen.getByPlaceholderText('Task name');
-
         fireEvent.change(input, {target: {value: notEmptyInputValue}});
+
         screen.getByText('Add').click();
 
         const invalidFeedback = screen.queryByText('Value can\'t be empty');
         expect(invalidFeedback).toBeNull();
     });
+
+    test('Should once call handleCreate with expected value', () => {
+        const mockCallback = jest.fn();
+        render(<CreateTaskForm handleCreate={mockCallback}/>);
+        const notEmptyInputValue = '23';
+        const input = screen.getByPlaceholderText('Task name');
+        fireEvent.change(input, {target: {value: notEmptyInputValue}});
+
+        screen.getByText('Add').click();
+
+        expect(mockCallback.mock.calls.length).toBe(1);
+        expect(mockCallback.mock.calls[0][0]).toBe(notEmptyInputValue);
+    })
 });
