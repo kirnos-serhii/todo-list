@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from '@testing-library/react';
 import CreateTaskForm from "../../todo-list/component/create-task-form";
 
-describe('Create task form', () => {
+describe('CreateTaskForm', () => {
     test('Should render expected component', () => {
         render(<CreateTaskForm handleCreate={() => {}}/>);
 
@@ -16,7 +16,7 @@ describe('Create task form', () => {
         screen.getByText('Add').click();
         const invalidFeedback = screen.getByText('Value can\'t be empty');
         expect(invalidFeedback).toBeInTheDocument();
-        expect(invalidFeedback).toHaveStyle(`color: #E00`)
+        expect(invalidFeedback).toHaveStyle(`color: #E00`);
     });
 
     test('Shouldn\'t show error message if try create not empty task', () => {
@@ -32,15 +32,15 @@ describe('Create task form', () => {
     });
 
     test('Should once call handleCreate with expected value', () => {
-        const mockCallback = jest.fn();
-        render(<CreateTaskForm handleCreate={mockCallback}/>);
+        const handleCreateSpy = jest.fn();
+        render(<CreateTaskForm handleCreate={handleCreateSpy}/>);
         const notEmptyInputValue = '23';
         const input = screen.getByPlaceholderText('Task name');
         fireEvent.change(input, {target: {value: notEmptyInputValue}});
 
         screen.getByText('Add').click();
 
-        expect(mockCallback.mock.calls.length).toBe(1);
-        expect(mockCallback.mock.calls[0][0]).toBe(notEmptyInputValue);
+        expect(handleCreateSpy.mock.calls.length).toBe(1);
+        expect(handleCreateSpy.mock.calls[0][0]).toBe(notEmptyInputValue);
     })
 });

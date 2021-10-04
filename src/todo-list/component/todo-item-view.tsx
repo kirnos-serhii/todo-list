@@ -7,7 +7,7 @@ interface Props {
     item: TodoItem,
     key: string,
     onDelete: (todoItem: TodoItem) => void,
-    onChangeDone: (isDone: boolean) => void,
+    onChange: (isDone: boolean) => void,
 }
 
 const ButtonClose = styled.button`
@@ -18,16 +18,17 @@ const ButtonClose = styled.button`
 const TodoItemView: FunctionComponent<Props> = (props) => {
     return (
         <div className={`alert alert-dismissible fade show p-2 ${props.item.isDone?'alert-success':'alert-primary'}`}
-             role="alert">
+             role="alert" data-testid="todo-item">
             <div className="form-check">
                 <input className="form-check-input" type="checkbox"
                        checked={props.item.isDone}
-                       onChange={(e) => props.onChangeDone(e.currentTarget.checked)}/>
-                <label className="form-check-label" htmlFor="flexCheckDefault">{props.item.name}</label>
+                       onChange={(e) => props.onChange(e.currentTarget.checked)}
+                       id={props.item.id}/>
+                <label className="form-check-label" htmlFor={props.item.id}>{props.item.name}</label>
             </div>
 
             <ButtonClose type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"
-                    onClick={() => {props.onDelete(props.item)}}/>
+                    onClick={() => {props.onDelete(props.item)}} data-testid="close-button"/>
         </div>
     )
 }

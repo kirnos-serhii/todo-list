@@ -15,7 +15,7 @@ const TodoList: FunctionComponent<Props> = (props) => {
             {props.items.map(item => (
                 <TodoItemView item={item} key={item.id}
                               onDelete={props.onDeleteItem}
-                              onChangeDone={(isDone) => props.onChangeDone(item, isDone)}
+                              onChange={(isDone) => props.onChangeDone(item, isDone)}
                 />
             ))}
         </div>
