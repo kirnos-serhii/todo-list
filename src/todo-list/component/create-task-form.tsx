@@ -1,8 +1,14 @@
 import React, {FormEvent, FunctionComponent, useState} from 'react';
+import styled from 'styled-components';
 
 interface Props {
     handleCreate: (taskName: string) => void,
 }
+
+const InvalidFeedback = styled.div`
+  display: inline;
+  color: #E00;
+`;
 
 const CreateTaskForm: FunctionComponent<Props> = (props: Props) => {
 
@@ -15,6 +21,8 @@ const CreateTaskForm: FunctionComponent<Props> = (props: Props) => {
         if (value === '') {
             setErrorMessage('Value can\'t be empty');
             return;
+        } else {
+            setErrorMessage('');
         }
 
         props.handleCreate(value);
@@ -34,7 +42,7 @@ const CreateTaskForm: FunctionComponent<Props> = (props: Props) => {
             />
             <button className="btn btn-outline-success" id="add-button">Add</button>
         </div>
-        {errorMessage && <div className="invalid-feedback">{errorMessage}</div>}
+        {errorMessage && <InvalidFeedback >{errorMessage}</InvalidFeedback>}
     </form>
     )
 }

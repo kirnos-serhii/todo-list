@@ -11,12 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.alert-dismissible .btn-close {
-  padding: 13px;
-  font-size: 14px;
-}
-
-div.invalid-feedback {
-  display: inline;
-}

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import TodoItem from "../model/todo-item";
 import {FunctionComponent} from "react";
+import styled from 'styled-components';
 
 interface Props {
     item: TodoItem,
@@ -8,6 +9,11 @@ interface Props {
     onDelete: (todoItem: TodoItem) => void,
     onChangeDone: (isDone: boolean) => void,
 }
+
+const ButtonClose = styled.button`
+  padding: 13px !important;
+  font-size: 14px;
+`;
 
 const TodoItemView: FunctionComponent<Props> = (props) => {
     return (
@@ -20,7 +26,7 @@ const TodoItemView: FunctionComponent<Props> = (props) => {
                 <label className="form-check-label" htmlFor="flexCheckDefault">{props.item.name}</label>
             </div>
 
-            <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"
+            <ButtonClose type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"
                     onClick={() => {props.onDelete(props.item)}}/>
         </div>
     )
