@@ -1,8 +1,23 @@
-
+/**
+ * Represents the task that should be done.
+ *
+ * Describes the state of task: his name, is it done or no and unique id.
+ */
 export default class TodoItem {
-
+    /**
+     * Unique identifier of the item.
+     * @private
+     */
     private readonly _id: string;
+    /**
+     * Name of the task.
+     * @private
+     */
     private readonly _name: string;
+    /**
+     * Indicates is task done or no.
+     * @private
+     */
     private _isDone: boolean;
 
     constructor(id: string, name: string, isDone: boolean) {
