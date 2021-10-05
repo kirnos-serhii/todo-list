@@ -40,7 +40,7 @@ const CreateTaskForm: FunctionComponent<Props> = (props: Props) => {
                 onChange={(event) => setValue(event.target.value)}
                 value={value}
             />
-            <button className="btn btn-outline-success" id="add-button">Add</button>
+            <button className="btn btn-outline-success">Add</button>
         </div>
         {errorMessage && <InvalidFeedback >{errorMessage}</InvalidFeedback>}
     </form>

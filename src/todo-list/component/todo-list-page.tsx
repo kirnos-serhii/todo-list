@@ -8,7 +8,7 @@ const TodoListPage: FunctionComponent = () => {
 
     const [items, setItems] = useState(new Array<TodoItem>());
 
-    function handleCreateTask(newTaskName: string): void {
+    function handleCreate(newTaskName: string): void {
         const newItem = new TodoItem(
             Date.now().toLocaleString(),
             newTaskName,
@@ -46,7 +46,7 @@ const TodoListPage: FunctionComponent = () => {
             </div>
             <div className="row justify-content-center">
                 <div className="col-6">
-                    <CreateTaskForm onCreate={handleCreateTask}/>
+                    <CreateTaskForm onCreate={handleCreate}/>
                 </div>
             </div>
         </div>

@@ -16,8 +16,12 @@ const ButtonClose = styled.button`
 `;
 
 const TodoItemView: FunctionComponent<Props> = (props) => {
+
+    const todoItemContainerClassName = 'alert alert-dismissible fade show p-2' +
+            props.item.isDone ? ' alert-success' : ' alert-primary';
+
     return (
-        <div className={`alert alert-dismissible fade show p-2 ${props.item.isDone?'alert-success':'alert-primary'}`}
+        <div className={todoItemContainerClassName}
              role="alert" data-testid="todo-item">
             <div className="form-check">
                 <input className="form-check-input" type="checkbox"
