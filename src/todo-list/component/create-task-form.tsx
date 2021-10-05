@@ -2,7 +2,7 @@ import React, {FormEvent, FunctionComponent, useState} from 'react';
 import styled from 'styled-components';
 
 interface Props {
-    handleCreate: (taskName: string) => void,
+    onCreate: (taskName: string) => void,
 }
 
 const InvalidFeedback = styled.div`
@@ -25,7 +25,7 @@ const CreateTaskForm: FunctionComponent<Props> = (props: Props) => {
             setErrorMessage('');
         }
 
-        props.handleCreate(value);
+        props.onCreate(value);
     }
 
     return (

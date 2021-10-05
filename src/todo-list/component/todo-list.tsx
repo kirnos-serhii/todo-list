@@ -11,14 +11,14 @@ interface Props {
 
 const TodoList: FunctionComponent<Props> = (props) => {
     return (
-        <div>
+        <React.Fragment>
             {props.items.map(item => (
                 <TodoItemView item={item} key={item.id}
                               onDelete={props.onDeleteItem}
                               onChange={(isDone) => props.onChangeDone(item, isDone)}
                 />
             ))}
-        </div>
+        </React.Fragment>
     )
 }
 

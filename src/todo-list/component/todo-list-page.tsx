@@ -46,7 +46,7 @@ const TodoListPage: FunctionComponent = () => {
             </div>
             <div className="row justify-content-center">
                 <div className="col-6">
-                    <CreateTaskForm handleCreate={handleCreateTask}/>
+                    <CreateTaskForm onCreate={handleCreateTask}/>
                 </div>
             </div>
         </div>
