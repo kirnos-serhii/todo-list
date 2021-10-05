@@ -2,6 +2,7 @@ import {fireEvent, render, screen} from "@testing-library/react";
 import React from "react";
 import TodoItemView from "../../todo-list/component/todo-item-view";
 import TodoItem from "../../todo-list/model/todo-item";
+import constants from "./helper";
 
 describe('TodoItemView', () => {
 
@@ -17,11 +18,11 @@ describe('TodoItemView', () => {
         expect(checkbox).toBeInTheDocument();
         expect(checkbox).not.toBeChecked();
 
-        expect(screen.getByTestId('todo-item')).toHaveClass('alert-primary');
+        expect(screen.getByTestId(constants.todoItemRowId)).toHaveClass('alert-primary');
 
         expect(screen.getByText(taskName)).toBeInTheDocument();
 
-        expect(screen.getByTestId('close-button')).toBeInTheDocument();
+        expect(screen.getByTestId(constants.closButtonTestId)).toBeInTheDocument();
     });
 
     test('Should render expected done component', () => {
@@ -36,11 +37,11 @@ describe('TodoItemView', () => {
         expect(checkbox).toBeInTheDocument();
         expect(checkbox).toBeChecked();
 
-        expect(screen.getByTestId('todo-item')).toHaveClass('alert-success');
+        expect(screen.getByTestId(constants.todoItemRowId)).toHaveClass('alert-success');
 
         expect(screen.getByText(taskName)).toBeInTheDocument();
 
-        expect(screen.getByTestId('close-button')).toBeInTheDocument();
+        expect(screen.getByTestId(constants.closButtonTestId)).toBeInTheDocument();
     });
 
     test('Should call on delete event handler with expected param when click delete button', () => {
@@ -53,7 +54,7 @@ describe('TodoItemView', () => {
                              onChange={() => {}}
                              onDelete={onDeleteSpy}/>);
 
-        screen.getByTestId('close-button').click();
+        screen.getByTestId(constants.closButtonTestId).click();
 
         expect(onDeleteSpy.mock.calls.length).toBe(1);
         expect(onDeleteSpy.mock.calls[0][0]).toBe(item);

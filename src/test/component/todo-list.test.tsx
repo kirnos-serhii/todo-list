@@ -2,6 +2,7 @@ import {fireEvent, render, screen} from "@testing-library/react";
 import React from "react";
 import TodoList from "../../todo-list/component/todo-list";
 import TodoItem from "../../todo-list/model/todo-item";
+import constants from "./helper";
 
 describe('TodoList', () => {
 
@@ -11,7 +12,7 @@ describe('TodoList', () => {
                          onDeleteItem={() => {}}
                          onChangeDone={() =>{}}/>);
 
-        expect(screen.queryAllByTestId('todo-item').length).toBe(expectedItems);
+        expect(screen.queryAllByTestId(constants.todoItemRowId).length).toBe(expectedItems);
     });
 
     test('Should render expected not empty todo-list component', () => {
@@ -23,7 +24,7 @@ describe('TodoList', () => {
                          onDeleteItem={() => {}}
                          onChangeDone={() =>{}}/>);
 
-        expect(screen.queryAllByTestId('todo-item').length).toBe(expectedItems);
+        expect(screen.queryAllByTestId(constants.todoItemRowId).length).toBe(expectedItems);
     });
 
     test('Should call delete handler when click on delete button on item row', () => {
@@ -35,7 +36,7 @@ describe('TodoList', () => {
                          onDeleteItem={onDeleteItemSpy}
                          onChangeDone={() =>{}}/>);
 
-        fireEvent.click(screen.getAllByTestId('close-button')[0]);
+        fireEvent.click(screen.getAllByTestId(constants.closButtonTestId)[0]);
 
         const expectedCalls = 1;
         expect(onDeleteItemSpy.mock.calls.length).toBe(expectedCalls);
