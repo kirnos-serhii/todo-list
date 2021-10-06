@@ -18,20 +18,20 @@ const TodoListPage: FunctionComponent = () => {
         setItems(items.concat(newItem));
     }
 
-    function handleDeleteItem(item: TodoItem) {
-        const index = items.indexOf(item);
-        if (index > -1) {
-            items.splice(index, 1);
-        }
+    function handleDeleteItem(itemId: string) {
 
-        setItems(new Array<TodoItem>().concat(items));
+        setItems(items.filter((item) => item.id !== itemId));
     }
 
-    function handleChangeDone(todoItem: TodoItem, isDone: boolean) {
-        const index = items.indexOf(todoItem);
-        items[index].isDone = isDone;
+    function handleChangeDone(itemId: string, isDone: boolean) {
+        const updatedItems = items.map((item) => {
+            if (item.id === itemId) {
+                item.isDone = isDone;
+            }
+            return item;
+        })
 
-        setItems(new Array<TodoItem>().concat(items));
+        setItems(updatedItems);
     }
 
     return (

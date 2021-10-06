@@ -5,8 +5,8 @@ import {FunctionComponent} from "react";
 
 interface Props {
     items: Array<TodoItem>,
-    onDeleteItem: (todoItem: TodoItem) => void,
-    onChangeDone: (todoItem: TodoItem, isDone: boolean) => void,
+    onDeleteItem: (itemId: string) => void,
+    onChangeDone: (itemId: string, isDone: boolean) => void,
 }
 
 const TodoList: FunctionComponent<Props> = (props) => {
@@ -14,8 +14,8 @@ const TodoList: FunctionComponent<Props> = (props) => {
         <React.Fragment>
             {props.items.map(item => (
                 <TodoItemView item={item} key={item.id}
-                              onDelete={props.onDeleteItem}
-                              onChange={(isDone) => props.onChangeDone(item, isDone)}
+                              onDelete={() => props.onDeleteItem(item.id)}
+                              onChange={() => props.onChangeDone(item.id, !item.isDone)}
                 />
             ))}
         </React.Fragment>
