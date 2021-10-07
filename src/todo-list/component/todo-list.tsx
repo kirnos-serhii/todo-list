@@ -4,7 +4,7 @@ import TodoItem from "../model/todo-item";
 import {FunctionComponent} from "react";
 
 interface Props {
-    items: Array<TodoItem>,
+    items: TodoItem[],
     onDeleteItem: (itemId: string) => void,
     onChangeDone: (itemId: string, isDone: boolean) => void,
 }

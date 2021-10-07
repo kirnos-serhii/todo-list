@@ -57,7 +57,6 @@ describe('TodoItemView', () => {
         screen.getByTestId(constants.closButtonTestId).click();
 
         expect(onDeleteSpy.mock.calls.length).toBe(1);
-        expect(onDeleteSpy.mock.calls[0][0]).toBe(item);
     });
 
     test('Should call on change event handler with expected param when click delete button', () => {
@@ -73,6 +72,5 @@ describe('TodoItemView', () => {
         fireEvent.click(screen.getByLabelText(taskName));
 
         expect(onChangeSpy.mock.calls.length).toBe(1);
-        expect(onChangeSpy.mock.calls[0][0]).toBe(false);
     });
 });

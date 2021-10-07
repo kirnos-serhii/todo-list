@@ -2,13 +2,15 @@ import * as React from "react";
 import TodoList from "./todo-list";
 import CreateTaskForm from "./create-task-form";
 import {FunctionComponent} from "react";
-import {useAppDispatch, useAppSelector} from "../store/hooks";
 import {createItem, deleteItem, changeItem} from "../store/todo-list-slice"
+import {useDispatch, useSelector} from "react-redux";
+import {AppState} from "../store/store";
+import TodoItem from "../model/todo-item";
 
 const TodoListPage: FunctionComponent = () => {
 
-    const items = useAppSelector(state => state.todoList.items)
-    const dispatch = useAppDispatch()
+    const items = useSelector<AppState, TodoItem[]>(state => state.todoList.items)
+    const dispatch = useDispatch()
 
     return (
         <div className="container mt-5">

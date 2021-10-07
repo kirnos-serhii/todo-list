@@ -3,11 +3,17 @@ import React from "react";
 import TodoListPage from "../../todo-list/component/todo-list-page";
 import constants from "./helper";
 import userEvent from "@testing-library/user-event";
+import {getStore} from "../../todo-list/store/store";
+import {Provider} from "react-redux";
 
 describe('TodoListPage', () => {
 
     test('Should render expected component', () => {
-        render(<TodoListPage />);
+        render(
+            <Provider store={getStore()}>
+                <TodoListPage />
+            </Provider>
+        );
 
         expect(screen.getByPlaceholderText(constants.taskInputPlaceholder)).toBeInTheDocument();
         expect(screen.getByText(constants.addButtonName)).toBeInTheDocument();
@@ -15,7 +21,11 @@ describe('TodoListPage', () => {
     });
 
     test('Should create task with expected state', () => {
-        render(<TodoListPage />);
+        render(
+            <Provider store={getStore()}>
+                <TodoListPage />
+            </Provider>
+        );
 
         const newTaskName = 'Random name of the task';
         fireEvent.change(screen.getByPlaceholderText(constants.taskInputPlaceholder),
@@ -29,7 +39,11 @@ describe('TodoListPage', () => {
     });
 
     test('Should delete task from list when click on delete button', () => {
-        render(<TodoListPage />);
+        render(
+            <Provider store={getStore()}>
+                <TodoListPage />
+            </Provider>
+        );
         const newTaskName = 'Random name of the task';
         fireEvent.change(screen.getByPlaceholderText(constants.taskInputPlaceholder),
             {target: {value: newTaskName}});
@@ -41,7 +55,11 @@ describe('TodoListPage', () => {
     });
 
     test('Should change task when click on task checkbox', () => {
-        render(<TodoListPage />);
+        render(
+            <Provider store={getStore()}>
+                <TodoListPage />
+            </Provider>
+        );
         const newTaskName = 'Random name of the task';
         fireEvent.change(screen.getByPlaceholderText(constants.taskInputPlaceholder),
             {target: {value: newTaskName}});

@@ -5,10 +5,10 @@ import './index.css';
 import App from './app';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
-import { store } from "./todo-list/store/store"
+import { getStore } from "./todo-list/store/store"
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={getStore()}>
         <App />
     </Provider>,
     document.getElementById('root')
